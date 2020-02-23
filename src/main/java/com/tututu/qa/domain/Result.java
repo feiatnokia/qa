@@ -5,7 +5,7 @@ import lombok.Setter;
 
 /**
  * @program: qa
- * @description: Http求统一返回
+ * @description: HTTP求统一返回
  * @author: 玉麒麟
  * @create: 2020-02-22 23:49
  **/

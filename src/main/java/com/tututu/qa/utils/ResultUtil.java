@@ -10,7 +10,7 @@ import com.tututu.qa.domain.Result;
  **/
 public class ResultUtil {
 
-    public static Result succesc(Object object){
+    public static Result success(Object object){
         Result result = new Result();
         result.setCode(200);
         result.setMessage("SUCCESS");

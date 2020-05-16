@@ -12,7 +12,7 @@ import java.util.List;
 @Mapper
 public interface RouterRepository {
     int insert(Router router);
-    int update(Router router);
+//    int update(Router router);
 
     List<Router> getRouterByPage(PaginationBase paginationBase);
     List<Router> queryByName(@Param("name") String name);

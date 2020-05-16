@@ -20,6 +20,12 @@ public class UUIDUtils {
         return Long.parseLong(sb.toString());
     }
 
+    public static String getEightRandom() {
+        int fourNum = (int) (Math.random() * (99999999 - 10000000 + 1)) + 10000000;
+
+        return fourNum + "";
+    }
+
     public static String getFourRandom() {
         int fourNum = (int) (Math.random() * (9999 - 1000 + 1)) + 1000;
 

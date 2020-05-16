@@ -5,10 +5,8 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.tututu.qa.domain.PaginationBase;
 import com.tututu.qa.domain.Router;
-import com.tututu.qa.domain.RouterParam;
 import com.tututu.qa.repository.RouterRepository;
 import com.tututu.qa.service.IRouterService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,7 +20,6 @@ import java.util.List;
 @Service
 public class RouterServiceImpl implements IRouterService {
 
-    @Autowired
     RouterRepository routerRepository;
 
     @Override

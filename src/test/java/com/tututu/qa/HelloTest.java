@@ -16,6 +16,7 @@ public class HelloTest {
 
     @Test
     public void add(){
+        log.info("hello");
         log.info(UUIDUtils.uuid());
     }
 }

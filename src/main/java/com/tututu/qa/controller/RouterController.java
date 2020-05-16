@@ -22,7 +22,6 @@ import java.util.List;
 @Slf4j
 public class RouterController {
 
-    @Autowired
     IRouterService iRouterService;
 
     @PostMapping(value = {"/create", "/update"})

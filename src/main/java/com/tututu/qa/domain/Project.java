@@ -9,7 +9,7 @@ import java.util.Date;
 @Builder
 public class Project {
 
-    private int id;
+    private Long id;
     private String projectNo;
     private String projectName;
     private String avatar;

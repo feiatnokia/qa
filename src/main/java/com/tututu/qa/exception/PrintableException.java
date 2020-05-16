@@ -2,7 +2,7 @@ package com.tututu.qa.exception;
 
 /**
  * @author Yu QiLin
- * @Description TODO
+ * @Description printable exception
  * @createTime 2020年05月16日 14:30:00
  */
 public abstract class PrintableException extends RuntimeException {

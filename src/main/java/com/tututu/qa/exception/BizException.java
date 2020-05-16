@@ -2,7 +2,7 @@ package com.tututu.qa.exception;
 
 /**
  * @author Yu QiLin
- * @Description TODO
+ * @Description biz exception
  * @createTime 2020年05月16日 14:27:00
  */
 public class BizException extends PrintableException{

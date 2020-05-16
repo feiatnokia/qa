@@ -15,15 +15,15 @@
         id, project_no, name, create_time, update_time
     </sql>
 
-    <insert id="insert" parameterType="com.tututu.qa.repository.ProjectRepository">
-<!--        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long ">-->
-<!--            SELECT LAST_INSERT_ID()-->
-<!--        </selectKey>-->
+    <insert id="insert" parameterType="com.tututu.qa.domain.Project">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
         insert into project (project_no, name, avatar, create_time, update_time)
         values (#{projectNo, jdbcType=VARCHAR}, #{projectName, jdbcType=VARCHAR}, #{avatar, jdbcType=VARCHAR}, SYSDATE(), SYSDATE())
     </insert>
 
-    <update id="update" parameterType="com.tututu.qa.repository.ProjectRepository">
+    <update id="update" parameterType="com.tututu.qa.domain.Project">
         update project
         <set>
             <if test="projectName != null and projectName != '' ">

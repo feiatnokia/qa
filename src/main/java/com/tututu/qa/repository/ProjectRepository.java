@@ -6,13 +6,13 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author Yu QiLin
- * @Description TODO
+ * @Description repository interface
  * @createTime 2020年05月16日 15:29:00
  */
 @Mapper
 @Component
 public interface ProjectRepository {
-    int insert(Project project);
+    Integer insert(Project project);
 
     void update(Project project);
 }

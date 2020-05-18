@@ -1,9 +1,8 @@
 package com.tututu.qa.controller;
 
-import com.tututu.qa.domain.Result;
+import com.tututu.qa.common.api.Result;
 import com.tututu.qa.model.ProjectVO;
 import com.tututu.qa.service.IProjectService;
-import com.tututu.qa.utils.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,10 +21,16 @@ public class ProjectController {
 
     IProjectService iProjectService;
 
-    @PostMapping(value = {"/create", "/update"})
-    public Result<ProjectVO> createOrUpdateProject(@RequestBody ProjectVO projectVO){
-        iProjectService.createOrUpdateProject(projectVO);
-        return ResultUtil.success("{}");
+    @PostMapping(value = {"/create"})
+    public Result createProject(@RequestBody ProjectVO projectVO){
+        iProjectService.createProject(projectVO);
+        return Result.success("更新完成");
+    }
+
+    @PostMapping(value = {"/update"})
+    public Result updateProject(@RequestBody ProjectVO projectVO){
+        iProjectService.updateProject(projectVO);
+        return Result.success("更新完成");
     }
 
 }

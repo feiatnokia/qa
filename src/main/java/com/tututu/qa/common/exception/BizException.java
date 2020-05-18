@@ -1,8 +1,8 @@
-package com.tututu.qa.exception;
+package com.tututu.qa.common.exception;
 
 /**
  * @author Yu QiLin
- * @Description biz exception
+ * @description biz exception
  * @createTime 2020年05月16日 14:27:00
  */
 public class BizException extends PrintableException{

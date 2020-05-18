@@ -1,4 +1,4 @@
-package com.tututu.qa.config;
+package com.tututu.qa.common.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;

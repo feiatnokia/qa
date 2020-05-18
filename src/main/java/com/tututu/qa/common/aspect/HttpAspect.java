@@ -1,4 +1,4 @@
-package com.tututu.qa.aspect;
+package com.tututu.qa.common.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;

@@ -7,7 +7,7 @@ import com.tututu.qa.domain.ProjectApi;
 import com.tututu.qa.model.ProjectApiIVO;
 import com.tututu.qa.repository.ProjectApiRepository;
 import com.tututu.qa.service.IProjectAPIService;
-import com.tututu.qa.utils.UUIDUtils;
+import com.tututu.qa.common.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,8 +40,12 @@ public class IProjectAPIServiceImpl implements IProjectAPIService {
         projectAPI.setRequest(projectApiIVO.getRequest());
         projectAPI.setResponse(projectApiIVO.getResponse());
         projectAPI.setUuid(UUIDUtils.uuid());
-        projectAPIRepository.insert(projectAPI);
-        return projectAPI.getUuid();
+        Integer i = projectAPIRepository.insert(projectAPI);
+        if(i > 0){
+            return projectAPI.getUuid();
+        } else {
+            return "";
+        }
     }
 
     @Override

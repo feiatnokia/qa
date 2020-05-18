@@ -1,4 +1,4 @@
-package com.tututu.qa.utils;
+package com.tututu.qa.common.api;
 
 import java.util.Objects;
 

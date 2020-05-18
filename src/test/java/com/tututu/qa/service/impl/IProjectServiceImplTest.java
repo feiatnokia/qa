@@ -21,12 +21,12 @@ public class IProjectServiceImplTest extends AbstractTestNGSpringContextTests {
     @Test
     public void addTest(){
         ProjectVO projectVO = ProjectVO.builder().projectName("test1").avatar("http3").build();
-        iProjectService.createOrUpdateProject(projectVO);
+        iProjectService.createProject(projectVO);
     }
 
     @Test
     public void modifyProjectTest(){
         ProjectVO projectVO = ProjectVO.builder().projectNo("61620923").projectName("test2").avatar("http4").build();
-        iProjectService.createOrUpdateProject(projectVO);
+        iProjectService.updateProject(projectVO);
     }
 }

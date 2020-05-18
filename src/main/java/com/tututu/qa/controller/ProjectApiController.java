@@ -1,10 +1,10 @@
 package com.tututu.qa.controller;
 
+import com.mysql.cj.util.StringUtils;
 import com.tututu.qa.domain.ProjectApi;
-import com.tututu.qa.domain.Result;
+import com.tututu.qa.common.api.Result;
 import com.tututu.qa.model.ProjectApiIVO;
 import com.tututu.qa.service.IProjectAPIService;
-import com.tututu.qa.utils.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,24 +22,23 @@ public class ProjectApiController {
     IProjectAPIService iProjectAPIService;
 
     @PostMapping(value = "/create")
-    public Result<ProjectApiIVO> create(@RequestBody ProjectApiIVO projectApiIVO){
+    public Result create(@RequestBody ProjectApiIVO projectApiIVO){
         String uuid = iProjectAPIService.create(projectApiIVO);
-        return ResultUtil.success("{}");
+        if(StringUtils.isNullOrEmpty(uuid)){
+            return Result.failed();
+        }
+        return Result.success(uuid);
     }
 
     @PostMapping(value = "/update")
-    public Result<ProjectApiIVO> update(@RequestBody ProjectApiIVO projectApiIVO){
+    public Result update(@RequestBody ProjectApiIVO projectApiIVO){
         iProjectAPIService.update(projectApiIVO);
-        return ResultUtil.success("{}");
+        return Result.success("更新完成");
     }
 
     @GetMapping(value = "/search")
-    public Result<ProjectApi> update(@RequestParam("name") String name){
+    public Result<List<ProjectApiIVO>> update(@RequestParam("name") String name){
         List<ProjectApiIVO> projectApiIVOList = iProjectAPIService.searchAPIByName(name);
-        Result result = Result.builder().build();
-        result.setCode(200);
-        result.setMessage("SUCCESS");
-        result.setData(projectApiIVOList);
-        return result;
+        return Result.success(projectApiIVOList);
     }
 }

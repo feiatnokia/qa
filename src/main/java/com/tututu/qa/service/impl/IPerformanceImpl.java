@@ -4,7 +4,7 @@ import com.tututu.qa.model.PerformanceVO;
 import com.tututu.qa.repository.PerformanceRepository;
 import com.tututu.qa.service.IPerformance;
 import com.tututu.qa.service.assembler.PerformanceAssembler;
-import com.tututu.qa.utils.UUIDUtils;
+import com.tututu.qa.common.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +27,12 @@ public class IPerformanceImpl implements IPerformance {
     public String createPerformanceItem(PerformanceVO performanceVO) {
         String uuid = UUIDUtils.uuid();
         performanceVO.setUuid(uuid);
-        performanceRepository.insert(PerformanceAssembler.toPerformance(performanceVO));
-        return uuid;
+        Integer i = performanceRepository.insert(PerformanceAssembler.toPerformance(performanceVO));
+        if(i > 0){
+            return uuid;
+        } else {
+            return "";
+        }
     }
 
     @Override

@@ -1,12 +1,11 @@
 package com.tututu.qa;
 
 
-import com.tututu.qa.utils.UUIDUtils;
+import com.tututu.qa.common.utils.UUIDUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
 /**
- * @program: qa
  * @description:
  * @author: 玉麒麟
  * @create: 2020-02-23 00:34

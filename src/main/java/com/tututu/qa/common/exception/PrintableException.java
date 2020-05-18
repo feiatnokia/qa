@@ -1,4 +1,4 @@
-package com.tututu.qa.exception;
+package com.tututu.qa.common.exception;
 
 /**
  * @author Yu QiLin

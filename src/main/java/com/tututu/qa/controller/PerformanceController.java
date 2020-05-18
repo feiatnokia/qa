@@ -1,7 +1,7 @@
 package com.tututu.qa.controller;
 
 import com.tututu.qa.domain.PaginationBase;
-import com.tututu.qa.domain.Result;
+import com.tututu.qa.common.api.Result;
 import com.tututu.qa.model.PerformanceVO;
 import com.tututu.qa.service.IPerformance;
 import org.springframework.web.bind.annotation.*;

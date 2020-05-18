@@ -4,7 +4,7 @@ import com.tututu.qa.domain.Project;
 import com.tututu.qa.model.ProjectVO;
 import com.tututu.qa.repository.ProjectRepository;
 import com.tututu.qa.service.IProjectService;
-import com.tututu.qa.utils.UUIDUtils;
+import com.tututu.qa.common.utils.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,29 +22,31 @@ public class IProjectServiceImpl implements IProjectService {
     }
 
     @Override
-    public void createOrUpdateProject(ProjectVO projectVO) {
-
-        Project project;
-        if(projectVO == null){
-            return;
+    public String createProject(ProjectVO projectVO) {
+        String projectNo = UUIDUtils.getEightRandom();
+        Project project = Project.builder()
+                .projectName(projectVO.getProjectName())
+                .projectNo(projectNo)
+                .avatar(projectVO.getAvatar())
+                .build();
+        Integer i = projectRepository.insert(project);
+        if(i > 0){
+            return projectNo;
+        } else {
+            return "";
         }
 
-        if(StringUtils.isBlank(projectVO.getProjectNo())){
-            project = Project.builder()
-                    .projectName(projectVO.getProjectName())
-                    .projectNo(UUIDUtils.getEightRandom())
-                    .avatar(projectVO.getAvatar())
-                    .build();
-            projectRepository.insert(project);
-        } else {
+    }
+
+    @Override
+    public void updateProject(ProjectVO projectVO) {
+
+        Project project;
             project = Project.builder()
                     .projectName(projectVO.getProjectName())
                     .projectNo(projectVO.getProjectNo())
                     .avatar(projectVO.getAvatar())
                     .build();
             projectRepository.update(project);
-        }
-
-
     }
 }

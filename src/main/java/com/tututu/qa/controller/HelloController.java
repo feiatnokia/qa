@@ -3,8 +3,7 @@ package com.tututu.qa.controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @program: qa
- * @description:
+ * @description: hello test
  * @author: 玉麒麟
  * @create: 2020-02-22 21:52
  **/

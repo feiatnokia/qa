@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @program: qa
- * @description:
+ * @description: Project Controller
  * @author: 玉麒麟
  * @create: 2020-02-23 19:19
  **/
@@ -24,7 +23,7 @@ public class ProjectController {
     IProjectService iProjectService;
 
     @PostMapping(value = {"/create", "/update"})
-    public Result<ProjectVO> createOrUpdateResource(@RequestBody ProjectVO projectVO){
+    public Result<ProjectVO> createOrUpdateProject(@RequestBody ProjectVO projectVO){
         iProjectService.createOrUpdateProject(projectVO);
         return ResultUtil.success("{}");
     }

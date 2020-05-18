@@ -11,7 +11,7 @@ import com.tututu.qa.domain.Result;
 public class ResultUtil {
 
     public static Result success(Object object){
-        Result result = new Result();
+        Result result = Result.builder().build();
         result.setCode(200);
         result.setMessage("SUCCESS");
         result.setData(object);
@@ -19,7 +19,7 @@ public class ResultUtil {
     }
 
     public static Result error(String code, String message){
-        Result result = new Result();
+        Result result = Result.builder().build();
         result.setCode(400);
         result.setMessage(message);
         result.setData("{}");

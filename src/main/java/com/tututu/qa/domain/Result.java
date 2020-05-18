@@ -1,7 +1,7 @@
 package com.tututu.qa.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Builder;
+import lombok.Data;
 
 /**
  * @program: qa
@@ -9,8 +9,8 @@ import lombok.Setter;
  * @author: 玉麒麟
  * @create: 2020-02-22 23:49
  **/
-@Setter
-@Getter
+@Data
+@Builder
 public class Result<T> {
 
     //错误码

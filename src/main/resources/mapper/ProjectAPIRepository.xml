@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tututu.qa.repository.ProjectAPIRepository">
+
+    <resultMap id="BaseResultMap" type="com.tututu.qa.domain.ProjectAPI">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="uuid" jdbcType="VARCHAR" property="uuid"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="path" jdbcType="VARCHAR" property="path"/>
+        <result column="request" jdbcType="VARCHAR" property="request"/>
+        <result column="response" jdbcType="VARCHAR" property="response"/>
+        <result column="project_no" jdbcType="VARCHAR" property="projectNo"/>
+        <result column="project_name" jdbcType="VARCHAR" property="projectName"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        uuid, name, path, request, response, project_no, project_name, create_time, update_time
+    </sql>
+
+    <insert id="insert" parameterType="com.tututu.qa.domain.ProjectAPI">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into project_api (uuid, name, path, request, response, project_no, project_name, create_time, update_time)
+        values (#{uuid, jdbcType=VARCHAR}, #{name, jdbcType=VARCHAR}, #{path, jdbcType=VARCHAR},
+        #{request, jdbcType=VARCHAR}, #{response, jdbcType=VARCHAR}, #{projectNo, jdbcType=VARCHAR},
+        #{projectName, jdbcType=VARCHAR}, SYSDATE(), SYSDATE())
+    </insert>
+
+    <update id="update" parameterType="com.tututu.qa.domain.ProjectAPI">
+        update project_api
+        <set>
+            <if test="name != null and name != '' ">
+                name = #{name, jdbcType=VARCHAR},
+            </if>
+            <if test="path != null and path !='' ">
+                path = #{path, jdbcType=VARCHAR},
+            </if>
+            <if test="request != null and request !='' ">
+                request = #{request, jdbcType=VARCHAR},
+            </if>
+            <if test="response != null and response !='' ">
+                response = #{response, jdbcType=VARCHAR},
+            </if>
+            <if test="projectNo != null and projectNo !='' ">
+                project_no = #{projectNo, jdbcType=VARCHAR},
+            </if>
+            <if test="projectName != null and projectName !='' ">
+                project_name = #{projectName, jdbcType=VARCHAR},
+            </if>
+            update_time = SYSDATE()
+        </set>
+        WHERE
+        uuid = #{uuid}
+    </update>
+
+    <select id="getAPIsByPage" parameterType="com.tututu.qa.domain.PaginationBase" resultMap="BaseResultMap" >
+        SELECT <include refid="Base_Column_List" />
+        FROM projectAPI
+    </select>
+
+    <select id="queryByName" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM projectAPI
+        <where>
+            name like CONCAT('%',#{name},'%')
+        </where>
+        ORDER BY update_time DESC
+    </select>
+
+</mapper>

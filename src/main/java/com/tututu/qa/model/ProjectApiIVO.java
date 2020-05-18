@@ -7,19 +7,19 @@ import java.util.Date;
 
 /**
  * @author Yu QiLin
- * @Description API VO
+ * @description API VO
  * @createTime 2020年05月18日 09:31:00
  */
 @Data
 @Builder
 public class ProjectApiIVO {
-    public String uuid;
-    public String name;
-    public String path;
-    public String request;
-    public String response;
-    public String projectNo;
-    public String projectName;
-    public Date createTime;
-    public Date updateTime;
+    private String uuid;
+    private String name;
+    private String path;
+    private String request;
+    private String response;
+    private String projectNo;
+    private String projectName;
+    private Date createTime;
+    private Date updateTime;
 }

@@ -1,16 +1,17 @@
-package com.tututu.qa.service.assemble;
+package com.tututu.qa.service.assembler;
 
 import com.tututu.qa.domain.Performance;
 import com.tututu.qa.model.PerformanceVO;
-import com.tututu.qa.utils.UUIDUtils;
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * @author Yu QiLin
- * @Description TODO
+ * @description to Performance
  * @createTime 2020年05月18日 14:48:00
  */
-public class PerformanceAssemble {
+public class PerformanceAssembler {
+
+    private PerformanceAssembler(){
+    }
 
     public static Performance toPerformance(PerformanceVO performanceVO){
         Performance performance = Performance.builder().build();

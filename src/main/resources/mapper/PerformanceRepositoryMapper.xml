@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tututu.qa.repository.PerformanceRepository">
+
+    <resultMap id="BaseResultMap" type="com.tututu.qa.domain.Performance">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="uuid" jdbcType="VARCHAR" property="uuid"/>
+        <result column="project_no" jdbcType="VARCHAR" property="projectNo"/>
+        <result column="project_name" jdbcType="VARCHAR" property="projectName"/>
+        <result column="api_uuid" jdbcType="VARCHAR" property="apiUuid"/>
+        <result column="api_name" jdbcType="VARCHAR" property="apiName"/>
+        <result column="api_path" jdbcType="VARCHAR" property="apiPath"/>
+        <result column="number" jdbcType="BIGINT" property="number"/>
+        <result column="average" jdbcType="DECIMAL" property="average"/>
+        <result column="ninety" jdbcType="DECIMAL" property="ninety"/>
+        <result column="min" jdbcType="DECIMAL" property="min"/>
+        <result column="max" jdbcType="DECIMAL" property="max"/>
+        <result column="cpu" jdbcType="DECIMAL" property="cpu"/>
+        <result column="memory" jdbcType="DECIMAL" property="memory"/>
+        <result column="io" jdbcType="DECIMAL" property="io"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        uuid, project_no, project_name, api_uuid, api_name, api_path, number, average,
+        ninety, min, max, cpu, io, memory, create_time, update_time
+    </sql>
+
+    <insert id="insert" parameterType="com.tututu.qa.domain.Performance">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into performance (uuid, project_no, project_name, api_uuid, api_name, api_path, number,
+        average, ninety, min, max, cpu, memory, io, create_time, update_time)
+        values (#{uuid, jdbcType=VARCHAR}, #{projectNo, jdbcType=VARCHAR}, #{projectName, jdbcType=VARCHAR},
+        #{apiUuid, jdbcType=VARCHAR}, #{apiName, jdbcType=VARCHAR}, #{apiPath, jdbcType=VARCHAR},
+        #{number, jdbcType=BIGINT}, #{average, jdbcType=DECIMAL}, #{ninety, jdbcType=DECIMAL}, #{min, jdbcType=DECIMAL},
+        #{max, jdbcType=DECIMAL}, #{cpu, jdbcType=DECIMAL}, #{memory, jdbcType=DECIMAL}, #{io, jdbcType=DECIMAL},
+        SYSDATE(), SYSDATE())
+    </insert>
+
+    <update id="update" parameterType="com.tututu.qa.domain.Performance">
+        update performance
+        <set>
+            <if test="projectNo != null and projectNo != '' ">
+                project_no = #{projectNo, jdbcType=VARCHAR},
+            </if>
+            <if test="projectName != null and projectName !='' ">
+                project_name = #{projectName, jdbcType=VARCHAR},
+            </if>
+            <if test="apiUuid != null and apiUuid !='' ">
+                api_uuid = #{apiUuid, jdbcType=VARCHAR},
+            </if>
+            <if test="apiName != null and apiName !='' ">
+                api_name = #{apiName, jdbcType=VARCHAR},
+            </if>
+            <if test="apiPath != null and apiPath !='' ">
+                api_path = #{apiPath, jdbcType=VARCHAR},
+            </if>
+            <if test="number != null and number !='' ">
+                number = #{number, jdbcType=BIGINT},
+            </if>
+            <if test="average != null and average !='' ">
+                average = #{average, jdbcType=DECIMAL},
+            </if>
+            <if test="ninety != null and ninety !='' ">
+                ninety = #{ninety, jdbcType=DECIMAL},
+            </if>
+            <if test="min != null and min !='' ">
+                min = #{min, jdbcType=DECIMAL},
+            </if>
+            <if test="max != null and max !='' ">
+                max = #{max, jdbcType=DECIMAL},
+            </if>
+            <if test="cpu != null and cpu !='' ">
+                cpu = #{cpu, jdbcType=DECIMAL},
+            </if>
+            <if test="memory != null and memory !='' ">
+                memory = #{memory, jdbcType=DECIMAL},
+            </if>
+            <if test="io != null and io !='' ">
+                io = #{io, jdbcType=DECIMAL},
+            </if>
+            update_time = SYSDATE()
+        </set>
+        WHERE
+        uuid = #{uuid}
+    </update>
+
+
+</mapper>

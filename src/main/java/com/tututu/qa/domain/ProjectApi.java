@@ -11,7 +11,7 @@ import java.util.Date;
  **/
 @Data
 @Builder
-public class ProjectAPI {
+public class ProjectApi {
     public Long id;
     public String uuid;
     public String name;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tututu.qa.repository.ProjectAPIRepository">
+<mapper namespace="com.tututu.qa.repository.ProjectApiRepository">
 
-    <resultMap id="BaseResultMap" type="com.tututu.qa.domain.ProjectAPI">
+    <resultMap id="BaseResultMap" type="com.tututu.qa.domain.ProjectApi">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="uuid" jdbcType="VARCHAR" property="uuid"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
@@ -19,7 +19,7 @@
         uuid, name, path, request, response, project_no, project_name, create_time, update_time
     </sql>
 
-    <insert id="insert" parameterType="com.tututu.qa.domain.ProjectAPI">
+    <insert id="insert" parameterType="com.tututu.qa.domain.ProjectApi">
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
             SELECT LAST_INSERT_ID()
         </selectKey>
@@ -29,7 +29,7 @@
         #{projectName, jdbcType=VARCHAR}, SYSDATE(), SYSDATE())
     </insert>
 
-    <update id="update" parameterType="com.tututu.qa.domain.ProjectAPI">
+    <update id="update" parameterType="com.tututu.qa.domain.ProjectApi">
         update project_api
         <set>
             <if test="name != null and name != '' ">

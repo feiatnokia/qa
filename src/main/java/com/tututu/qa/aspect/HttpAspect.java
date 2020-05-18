@@ -11,8 +11,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import java.util.Arrays;
+
 /**
- * @program: qa
  * @description:
  * @author: 玉麒麟
  * @create: 2020-02-22 23:11
@@ -25,16 +26,22 @@ public class HttpAspect {
 
     @Pointcut("execution(public * com.tututu.qa.controller.*.*(..))")
     public void log(){
-
+        logger.info("start: ");
     }
 
     @Before("log()")
     public void doBefore(JoinPoint joinPoint){
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        requestAttributes.getRequest();
-        logger.info("request parameters: " + requestAttributes.getRequest().getRequestURL());
-        logger.info("request parameters: " + requestAttributes.getRequest().getMethod());
-        logger.info("request parameters: " + joinPoint.getArgs());
+        if(requestAttributes == null){
+            return;
+        }
+        String requestUrl = requestAttributes.getRequest().getRequestURL().toString();
+        String method = requestAttributes.getRequest().getMethod();
+        String args = Arrays.toString(joinPoint.getArgs() );
+        String requestParams = "request parameters: ";
+        logger.info(requestParams + requestUrl);
+        logger.info(requestParams + method);
+        logger.info(requestParams + args);
     }
 
     @After("log()")

@@ -1,8 +1,8 @@
 package com.tututu.qa.controller;
 
-import com.tututu.qa.domain.ProjectAPI;
+import com.tututu.qa.domain.ProjectApi;
 import com.tututu.qa.domain.Result;
-import com.tututu.qa.model.ProjectAPIVO;
+import com.tututu.qa.model.ProjectApiIVO;
 import com.tututu.qa.service.IProjectAPIService;
 import com.tututu.qa.utils.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -17,29 +17,29 @@ import java.util.List;
  **/
 @RestController
 @Slf4j
-public class ProjectAPIController {
+public class ProjectApiController {
 
     IProjectAPIService iProjectAPIService;
 
     @PostMapping(value = "/create")
-    public Result<ProjectAPIVO> create(@RequestBody ProjectAPIVO projectAPIVO){
-        String uuid = iProjectAPIService.create(projectAPIVO);
+    public Result<ProjectApiIVO> create(@RequestBody ProjectApiIVO projectApiIVO){
+        String uuid = iProjectAPIService.create(projectApiIVO);
         return ResultUtil.success("{}");
     }
 
     @PostMapping(value = "/update")
-    public Result<ProjectAPIVO> update(@RequestBody ProjectAPIVO projectAPIVO){
-        iProjectAPIService.update(projectAPIVO);
+    public Result<ProjectApiIVO> update(@RequestBody ProjectApiIVO projectApiIVO){
+        iProjectAPIService.update(projectApiIVO);
         return ResultUtil.success("{}");
     }
 
     @GetMapping(value = "/search")
-    public Result<ProjectAPI> update(@RequestParam("name") String name){
-        List<ProjectAPIVO> projectAPIVOList = iProjectAPIService.searchAPIByName(name);
+    public Result<ProjectApi> update(@RequestParam("name") String name){
+        List<ProjectApiIVO> projectApiIVOList = iProjectAPIService.searchAPIByName(name);
         Result result = Result.builder().build();
         result.setCode(200);
         result.setMessage("SUCCESS");
-        result.setData(projectAPIVOList);
+        result.setData(projectApiIVOList);
         return result;
     }
 }

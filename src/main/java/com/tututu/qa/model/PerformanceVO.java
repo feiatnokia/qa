@@ -16,11 +16,11 @@ import java.util.Date;
 public class PerformanceVO {
 
     public String uuid;
-    public String project_no;
-    public String project_name;
-    public String api_uuid;
-    public String api_name;
-    public String api_path;
+    public String projectNo;
+    public String projectName;
+    public String apiUuid;
+    public String apiName;
+    public String apiPath;
     public Integer number;
     public BigDecimal average;
     public BigDecimal ninety;

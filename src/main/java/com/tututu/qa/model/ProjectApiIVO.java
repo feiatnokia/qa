@@ -12,7 +12,7 @@ import java.util.Date;
  */
 @Data
 @Builder
-public class ProjectAPIVO {
+public class ProjectApiIVO {
     public String uuid;
     public String name;
     public String path;

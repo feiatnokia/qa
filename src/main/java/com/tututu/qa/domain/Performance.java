@@ -7,28 +7,28 @@ import java.util.Date;
 
 /**
  * @author Yu QiLin
- * @Description performance list
+ * @description performance list
  * @createTime 2020年05月18日 09:20:00
  */
 @Data
 @Builder
 public class Performance {
 
-    public Long id;
-    public String uuid;
-    public String projectNo;
-    public String projectName;
-    public String apiUuid;
-    public String apiName;
-    public String apiPath;
-    public Integer number;
-    public BigDecimal average;
-    public BigDecimal ninety;
-    public BigDecimal min;
-    public BigDecimal max;
-    public BigDecimal cpu;
-    public BigDecimal memory;
-    public BigDecimal io;
-    public Date createTime;
-    public Date updateTime;
+    private Long id;
+    private String uuid;
+    private String projectNo;
+    private String projectName;
+    private String apiUuid;
+    private String apiName;
+    private String apiPath;
+    private Integer number;
+    private BigDecimal average;
+    private BigDecimal ninety;
+    private BigDecimal min;
+    private BigDecimal max;
+    private BigDecimal cpu;
+    private BigDecimal memory;
+    private BigDecimal io;
+    private Date createTime;
+    private Date updateTime;
 }

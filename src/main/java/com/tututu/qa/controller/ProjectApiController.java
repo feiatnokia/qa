@@ -8,6 +8,7 @@ import com.tututu.qa.model.ProjectApiQueryVO;
 import com.tututu.qa.model.ProjectApiVO;
 import com.tututu.qa.service.IProjectAPIService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +23,8 @@ import java.util.List;
 @RequestMapping(value = "/project/api")
 public class ProjectApiController {
 
-    IProjectAPIService iProjectAPIService;
+    @Autowired
+    private IProjectAPIService iProjectAPIService;
 
     @PostMapping(value = "/create")
     public Result create(@RequestBody ProjectApiVO projectApiVO){
@@ -39,7 +41,7 @@ public class ProjectApiController {
         return Result.success("更新完成");
     }
 
-    @GetMapping(value = "/list")
+    @PostMapping(value = "/list")
     public Result<CommonPage> list(@RequestBody ProjectApiQueryVO projectApiQueryVO){
         List<ProjectApi> list = iProjectAPIService.listApis(projectApiQueryVO);
         return Result.success(CommonPage.restPage(list));

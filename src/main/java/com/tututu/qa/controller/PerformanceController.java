@@ -6,8 +6,10 @@ import com.tututu.qa.domain.Performance;
 import com.tututu.qa.model.PerformanceQueryVO;
 import com.tututu.qa.model.PerformanceVO;
 import com.tututu.qa.service.IPerformance;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -19,9 +21,10 @@ import java.util.List;
 @RequestMapping(value = "/performance")
 public class PerformanceController {
 
+    @Autowired
     private IPerformance iPerformance;
 
-    @GetMapping(value = "/list")
+    @PostMapping(value = "/list")
     public Result getPerformanceItems(@RequestBody PerformanceQueryVO performanceQueryVO){
         List<Performance> list = iPerformance.getPerformanceItems(performanceQueryVO);
         return Result.success(CommonPage.restPage(list));
@@ -30,7 +33,7 @@ public class PerformanceController {
     @PostMapping(value = "/create")
     public Result createPerformanceItem(@RequestBody PerformanceVO performanceVO){
         String uuid = iPerformance.createPerformanceItem(performanceVO);
-        return Result.success(uuid);
+        return Result.success(new HashMap(){{ put("uuid", uuid); }});
     }
 
     @PostMapping(value = "/update")

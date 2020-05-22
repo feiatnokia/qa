@@ -5,7 +5,7 @@ package com.tututu.qa.common.api;
  * @author: 玉麒麟
  * @create: 2020-02-22 23:49
  **/
-public class Result<T> {
+public class Result<T>{
 
     private Integer code;
     private String message;

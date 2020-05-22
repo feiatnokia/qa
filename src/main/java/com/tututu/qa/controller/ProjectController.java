@@ -7,11 +7,10 @@ import com.tututu.qa.common.api.Result;
 import com.tututu.qa.model.ProjectVO;
 import com.tututu.qa.service.IProjectService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -20,16 +19,17 @@ import java.util.List;
  * @create: 2020-02-23 19:19
  **/
 @Slf4j
-@RequestMapping("project")
+@RequestMapping("/project")
 @RestController
 public class ProjectController {
 
-    IProjectService iProjectService;
+    @Autowired
+    private IProjectService iProjectService;
 
     @PostMapping(value = {"/create"})
     public Result createProject(@RequestBody ProjectVO projectVO){
-        iProjectService.createProject(projectVO);
-        return Result.success("更新完成");
+        String projectNo = iProjectService.createProject(projectVO);
+        return Result.success(new HashMap(){{put("projectNo", projectNo);}});
     }
 
     @PostMapping(value = {"/update"})

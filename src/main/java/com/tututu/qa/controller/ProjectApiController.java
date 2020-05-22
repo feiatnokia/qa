@@ -19,6 +19,7 @@ import java.util.List;
  **/
 @RestController
 @Slf4j
+@RequestMapping(value = "/project/api")
 public class ProjectApiController {
 
     IProjectAPIService iProjectAPIService;

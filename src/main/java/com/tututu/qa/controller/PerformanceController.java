@@ -16,23 +16,24 @@ import java.util.List;
  * @create: 2020-02-23 19:20
  **/
 @RestController
+@RequestMapping(value = "/performance")
 public class PerformanceController {
 
     private IPerformance iPerformance;
 
-    @GetMapping(value = "/performance")
+    @GetMapping(value = "/list")
     public Result getPerformanceItems(@RequestBody PerformanceQueryVO performanceQueryVO){
         List<Performance> list = iPerformance.getPerformanceItems(performanceQueryVO);
         return Result.success(CommonPage.restPage(list));
     }
 
-    @PostMapping(value = "/performance/create")
+    @PostMapping(value = "/create")
     public Result createPerformanceItem(@RequestBody PerformanceVO performanceVO){
         String uuid = iPerformance.createPerformanceItem(performanceVO);
         return Result.success(uuid);
     }
 
-    @PostMapping(value = "/performance/update")
+    @PostMapping(value = "/update")
     public Result updatePerformanceItem(@RequestBody PerformanceVO performanceVO){
         iPerformance.updatePerformanceItem(performanceVO);
         return Result.success("更新完成");

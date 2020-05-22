@@ -1,9 +1,8 @@
 package com.tututu.qa.repository;
 
-import com.tututu.qa.domain.PaginationBase;
 import com.tututu.qa.domain.ProjectApi;
+import com.tututu.qa.model.ProjectApiQueryVO;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -13,9 +12,5 @@ import java.util.List;
 public interface ProjectApiRepository {
     Integer insert(ProjectApi projectAPI);
     void update(ProjectApi projectAPI);
-
-    List<ProjectApi> getAPIsByPage(PaginationBase paginationBase);
-    List<ProjectApi> queryByName(@Param("name") String name);
-
-
+    List<ProjectApi> queryByCondition(ProjectApiQueryVO projectApiQueryVO);
 }

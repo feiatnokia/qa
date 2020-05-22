@@ -4,6 +4,8 @@ import com.tututu.qa.domain.Project;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * @author Yu QiLin
  * @description repository interface
@@ -15,4 +17,6 @@ public interface ProjectRepository {
     Integer insert(Project project);
 
     void update(Project project);
+
+    List<Project> list();
 }

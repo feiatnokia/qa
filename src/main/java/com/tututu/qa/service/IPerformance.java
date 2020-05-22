@@ -1,6 +1,10 @@
 package com.tututu.qa.service;
 
+import com.tututu.qa.domain.Performance;
+import com.tututu.qa.model.PerformanceQueryVO;
 import com.tututu.qa.model.PerformanceVO;
+
+import java.util.List;
 
 /**
  * @author Yu QiLin
@@ -13,4 +17,6 @@ public interface IPerformance {
     void updatePerformanceItem(PerformanceVO performanceVO);
 
     PerformanceVO getPerformanceItemByUuid(String uuid);
+
+    List<Performance> getPerformanceItems(PerformanceQueryVO performanceQueryVO);
 }

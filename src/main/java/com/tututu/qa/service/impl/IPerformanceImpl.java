@@ -1,5 +1,8 @@
 package com.tututu.qa.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.tututu.qa.domain.Performance;
+import com.tututu.qa.model.PerformanceQueryVO;
 import com.tututu.qa.model.PerformanceVO;
 import com.tututu.qa.repository.PerformanceRepository;
 import com.tututu.qa.service.IPerformance;
@@ -7,6 +10,8 @@ import com.tututu.qa.service.assembler.PerformanceAssembler;
 import com.tututu.qa.common.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Yu QiLin
@@ -44,5 +49,11 @@ public class IPerformanceImpl implements IPerformance {
     public PerformanceVO getPerformanceItemByUuid(String uuid) {
 
         return null;
+    }
+
+    @Override
+    public List<Performance> getPerformanceItems(PerformanceQueryVO performanceQueryVO) {
+        PageHelper.startPage(performanceQueryVO.getCurrent(), performanceQueryVO.getPageSize());
+        return performanceRepository.queryByCondition(performanceQueryVO);
     }
 }

@@ -1,10 +1,14 @@
 package com.tututu.qa.controller;
 
-import com.tututu.qa.domain.PaginationBase;
+import com.tututu.qa.common.api.CommonPage;
 import com.tututu.qa.common.api.Result;
+import com.tututu.qa.domain.Performance;
+import com.tututu.qa.model.PerformanceQueryVO;
 import com.tututu.qa.model.PerformanceVO;
 import com.tututu.qa.service.IPerformance;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @description: Performance Controller
@@ -17,21 +21,21 @@ public class PerformanceController {
     private IPerformance iPerformance;
 
     @GetMapping(value = "/performance")
-    public Result<PerformanceVO> getPerformanceItems(@RequestBody PaginationBase paginationBase){
-
-        return null;
+    public Result getPerformanceItems(@RequestBody PerformanceQueryVO performanceQueryVO){
+        List<Performance> list = iPerformance.getPerformanceItems(performanceQueryVO);
+        return Result.success(CommonPage.restPage(list));
     }
 
     @PostMapping(value = "/performance/create")
-    public Result<PerformanceVO> createPerformanceItem(@RequestBody PerformanceVO performanceVO){
+    public Result createPerformanceItem(@RequestBody PerformanceVO performanceVO){
         String uuid = iPerformance.createPerformanceItem(performanceVO);
-        return null;
+        return Result.success(uuid);
     }
 
     @PostMapping(value = "/performance/update")
-    public Result<PerformanceVO> updatePerformanceItem(@RequestBody PerformanceVO performanceVO){
+    public Result updatePerformanceItem(@RequestBody PerformanceVO performanceVO){
         iPerformance.updatePerformanceItem(performanceVO);
-        return null;
+        return Result.success("更新完成");
     }
 
     @PostMapping(value = "/performance/{uuid}/detail")

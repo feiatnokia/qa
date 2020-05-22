@@ -1,4 +1,4 @@
-package com.tututu.qa.domain;
+package com.tututu.qa.model;
 
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +10,7 @@ import lombok.Data;
 */
 @Data
 @Builder
-public class PaginationBase {
+public class ProjectQueryVO {
     private int     current;
     private int     pageSize;
     private int     offsetIndex;

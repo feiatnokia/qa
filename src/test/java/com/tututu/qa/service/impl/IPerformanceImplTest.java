@@ -1,13 +1,17 @@
 package com.tututu.qa.service.impl;
 
+import com.tututu.qa.domain.Performance;
+import com.tututu.qa.model.PerformanceQueryVO;
 import com.tututu.qa.model.PerformanceVO;
 import com.tututu.qa.service.IPerformance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * @author Yu QiLin
@@ -59,5 +63,12 @@ public class IPerformanceImplTest extends AbstractTestNGSpringContextTests {
                 .io(BigDecimal.ONE)
                 .build();
         iPerformance.updatePerformanceItem(performanceVO);
+    }
+
+    @Test
+    public void testGetPerformanceItems() {
+        PerformanceQueryVO performanceQueryVO = PerformanceQueryVO.builder().current(1).pageSize(10).build();
+        List<Performance> list = iPerformance.getPerformanceItems(performanceQueryVO);
+        Assert.assertNotNull(list.get(0).getUuid());
     }
 }

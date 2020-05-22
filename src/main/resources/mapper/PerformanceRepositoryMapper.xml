@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tututu.qa.repository.PerformanceRepository">
 
-    <resultMap id="BaseResultMap" type="com.tututu.qa.domain.Performance">
+    <resultMap id="PerformanceResultMap" type="com.tututu.qa.domain.Performance">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="uuid" jdbcType="VARCHAR" property="uuid"/>
         <result column="project_no" jdbcType="VARCHAR" property="projectNo"/>
@@ -22,7 +22,7 @@
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
+    <sql id="Performance_Column_List">
         uuid, project_no, project_name, api_uuid, api_name, api_path, number, average,
         ninety, min, max, cpu, io, memory, create_time, update_time
     </sql>
@@ -87,6 +87,26 @@
         WHERE
         uuid = #{uuid}
     </update>
+    <select id="queryByCondition" parameterType="com.tututu.qa.model.PerformanceQueryVO" resultMap="PerformanceResultMap">
+        select
+        <include refid="Performance_Column_List"></include>
+        from performance
+        <where>
+            <if test="projectNo != null and projectNo != '' ">
+                AND project_no = #{projectNo}
+            </if>
+            <if test="projectName != null and projectName != '' ">
+                AND project_name = #{projectName}
+            </if>
+            <if test="apiUuid != null and apiUuid != '' ">
+                AND api_uuid = #{apiUuid}
+            </if>
+            <if test="apiName != null and apiName != '' ">
+                AND api_name = #{apiName}
+            </if>
+        </where>
+        order by create_time DESC
+    </select>
 
 
 </mapper>

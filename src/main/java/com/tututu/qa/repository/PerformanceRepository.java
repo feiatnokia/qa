@@ -1,12 +1,15 @@
 package com.tututu.qa.repository;
 
 import com.tututu.qa.domain.Performance;
+import com.tututu.qa.model.PerformanceQueryVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * @author Yu QiLin
- * @Description TODO
+ * @description TODO
  * @createTime 2020年05月18日 14:29:00
  */
 @Mapper
@@ -15,4 +18,6 @@ public interface PerformanceRepository {
     Integer insert(Performance performance);
 
     void update(Performance performance);
+
+    List<Performance> queryByCondition(PerformanceQueryVO performanceQueryVO);
 }

@@ -56,19 +56,21 @@
         uuid = #{uuid}
     </update>
 
-    <select id="getAPIsByPage" parameterType="com.tututu.qa.domain.PaginationBase" resultMap="BaseResultMap" >
-        SELECT <include refid="Base_Column_List" />
-        FROM projectAPI
-    </select>
-
-    <select id="queryByName" resultMap="BaseResultMap">
-        SELECT
-        <include refid="Base_Column_List" />
-        FROM projectAPI
+    <select id="queryByCondition" parameterType="com.tututu.qa.model.ProjectApiQueryVO" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"></include>
+        from project_api
         <where>
-            name like CONCAT('%',#{name},'%')
+            <if test="name != null and name != '' ">
+                AND name = #{name}
+            </if>
+            <if test="projectNo != null and projectNo != '' ">
+                AND project_no = #{projectNo}
+            </if>
+            <if test="projectName != null and projectName != '' ">
+                AND project_name = #{projectName}
+            </if>
         </where>
-        ORDER BY update_time DESC
     </select>
 
 </mapper>

@@ -1,10 +1,9 @@
 package com.tututu.qa.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.tututu.qa.domain.PaginationBase;
 import com.tututu.qa.domain.ProjectApi;
-import com.tututu.qa.model.ProjectApiIVO;
+import com.tututu.qa.model.ProjectApiQueryVO;
+import com.tututu.qa.model.ProjectApiVO;
 import com.tututu.qa.repository.ProjectApiRepository;
 import com.tututu.qa.service.IProjectAPIService;
 import com.tututu.qa.common.utils.*;
@@ -31,14 +30,14 @@ public class IProjectAPIServiceImpl implements IProjectAPIService {
     }
 
     @Override
-    public String create(ProjectApiIVO projectApiIVO) {
+    public String create(ProjectApiVO projectApiVO) {
         ProjectApi projectAPI = ProjectApi.builder().build();
-        projectAPI.setName(projectApiIVO.getName());
-        projectAPI.setPath(projectApiIVO.getPath());
-        projectAPI.setProjectNo(projectApiIVO.getProjectNo());
-        projectAPI.setProjectName(projectApiIVO.getProjectName());
-        projectAPI.setRequest(projectApiIVO.getRequest());
-        projectAPI.setResponse(projectApiIVO.getResponse());
+        projectAPI.setName(projectApiVO.getName());
+        projectAPI.setPath(projectApiVO.getPath());
+        projectAPI.setProjectNo(projectApiVO.getProjectNo());
+        projectAPI.setProjectName(projectApiVO.getProjectName());
+        projectAPI.setRequest(projectApiVO.getRequest());
+        projectAPI.setResponse(projectApiVO.getResponse());
         projectAPI.setUuid(UUIDUtils.uuid());
         Integer i = projectAPIRepository.insert(projectAPI);
         if(i > 0){
@@ -48,30 +47,24 @@ public class IProjectAPIServiceImpl implements IProjectAPIService {
         }
     }
 
-    @Override
-    public PageInfo<ProjectApiIVO> getAPIs(PaginationBase paginationBase) {
-        PageHelper.startPage(paginationBase.getCurrent(), paginationBase.getPageSize());
-        List<ProjectApi> ls = projectAPIRepository.getAPIsByPage(paginationBase);
-        PageInfo<ProjectApi> projectAPIPageInfo = new PageInfo<>(ls);
-        return null;
-    }
 
     @Override
-    public List<ProjectApiIVO> searchAPIByName(String name) {
-        return null;
-    }
-
-    @Override
-    public void update(ProjectApiIVO projectApiIVO) {
+    public void update(ProjectApiVO projectApiVO) {
         ProjectApi projectAPI = ProjectApi.builder().build();
-        projectAPI.setUuid(projectApiIVO.getUuid());
-        projectAPI.setName(projectApiIVO.getName());
-        projectAPI.setPath(projectApiIVO.getPath());
-        projectAPI.setProjectNo(projectApiIVO.getProjectNo());
-        projectAPI.setProjectName(projectApiIVO.getProjectName());
-        projectAPI.setRequest(projectApiIVO.getRequest());
-        projectAPI.setResponse(projectApiIVO.getResponse());
+        projectAPI.setUuid(projectApiVO.getUuid());
+        projectAPI.setName(projectApiVO.getName());
+        projectAPI.setPath(projectApiVO.getPath());
+        projectAPI.setProjectNo(projectApiVO.getProjectNo());
+        projectAPI.setProjectName(projectApiVO.getProjectName());
+        projectAPI.setRequest(projectApiVO.getRequest());
+        projectAPI.setResponse(projectApiVO.getResponse());
         projectAPIRepository.update(projectAPI);
 
+    }
+
+    @Override
+    public List<ProjectApi> listApis(ProjectApiQueryVO projectApiQueryVO) {
+        PageHelper.startPage(projectApiQueryVO.getCurrent(), projectApiQueryVO.getPageSize());
+        return projectAPIRepository.queryByCondition(projectApiQueryVO);
     }
 }

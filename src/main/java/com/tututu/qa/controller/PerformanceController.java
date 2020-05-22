@@ -39,7 +39,7 @@ public class PerformanceController {
         return Result.success("更新完成");
     }
 
-    @PostMapping(value = "/performance/{uuid}/detail")
+    @PostMapping(value = "/{uuid}/detail")
     public Result<PerformanceVO> getPerformanceItemByUuid(@PathVariable("uuid") String uuid){
         PerformanceVO performanceVO = iPerformance.getPerformanceItemByUuid(uuid);
         return null;

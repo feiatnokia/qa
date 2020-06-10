@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 /**
- * @author Yu QiLin
+ * @author 玉麒麟
  * @description data provider helper
  * @createTime 2020年05月31日 16:03:00
  */
@@ -160,16 +160,15 @@ public class DataHelper extends AbstractTestNGSpringContextTests {
      */
 
     public String getCell(Cell cell) {
-        String cellValue = null;
+        String cellValue;
         HSSFDataFormatter hSSFDataFormatter = new HSSFDataFormatter();
         cellValue = hSSFDataFormatter.formatCellValue(cell); // 使用EXCEL原来格式的方式取得值
         return cellValue;
     }
 
     /**
-     * 去除 字符串收尾的 特殊的Unicode [ "\uFEFF" ]
      * csv 文件可能会带有该编码
-     *
+     * @description 去除 字符串收尾的 特殊的Unicode [ "\uFEFF" ]
      * @param str
      * @return
      */

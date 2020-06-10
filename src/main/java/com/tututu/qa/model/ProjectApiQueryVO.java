@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 /**
- * @author Yu QiLin
+ * @author 玉麒麟
  * @description query api
  * @createTime 2020年05月22日 11:04:00
  */

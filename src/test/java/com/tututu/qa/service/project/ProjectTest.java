@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import java.util.Map;
 
 /**
- * @author Yu QiLin
+ * @author 玉麒麟
  * @description run test with data provider csv, yml, excel, xml
  * @createTime 2020年05月31日 16:28:00
  */

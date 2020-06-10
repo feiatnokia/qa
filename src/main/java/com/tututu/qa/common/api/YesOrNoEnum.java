@@ -3,7 +3,7 @@ package com.tututu.qa.common.api;
 import java.util.Objects;
 
 /**
- * @author Yu QiLin
+ * @author 玉麒麟
  * @Description YES or NO
  * @createTime 2020年05月18日 11:15:00
  */

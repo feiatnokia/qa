@@ -1,7 +1,7 @@
 package com.tututu.qa.common.api;
 
 /**
- * @author Yu QiLin
+ * @author 玉麒麟
  * @description return code
  * @createTime 2020年05月18日 21:18:00
  */

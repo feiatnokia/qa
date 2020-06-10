@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * @author Yu QiLin
+ * @author 玉麒麟
  * @description repository interface
  * @createTime 2020年05月16日 15:29:00
  */

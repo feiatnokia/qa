@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * @author Yu QiLin
+ * @author 玉麒麟
  * @description Performance VO
  * @createTime 2020年05月18日 09:31:00
  */

@@ -1,7 +1,7 @@
 package com.tututu.qa.common.exception;
 
 /**
- * @author Yu QiLin
+ * @author 玉麒麟
  * @Description printable exception
  * @createTime 2020年05月16日 14:30:00
  */

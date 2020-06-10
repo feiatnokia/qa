@@ -22,7 +22,7 @@ import org.testng.annotations.Test;
 import java.nio.charset.Charset;
 
 /**
- * @author Yu QiLin
+ * @author 玉麒麟
  * @description test cases for project controller
  * @createTime 2020年05月22日 17:58:00
  */

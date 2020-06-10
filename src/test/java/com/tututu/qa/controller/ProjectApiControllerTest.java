@@ -26,7 +26,7 @@ import java.nio.charset.Charset;
 import static org.testng.Assert.*;
 
 /**
- * @author Yu QiLin
+ * @author 玉麒麟
  * @description test cases for project api controller
  * @createTime 2020年05月22日 17:59:00
  */

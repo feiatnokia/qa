@@ -10,7 +10,7 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
 
 /**
- * @author Yu QiLin
+ * @author 玉麒麟
  * @description api test
  * @createTime 2020年05月18日 10:24:00
  */

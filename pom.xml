@@ -148,7 +148,7 @@
                 <version>2.21.0</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <!--<file>src/test/resources/BrandOpr.xml</file>-->
+                        <file>src/test/resources/suite/project.xml</file>
                         <!--<file>src/test/resources/WebPortal.xml</file>-->
                     </suiteXmlFiles>
                 </configuration>

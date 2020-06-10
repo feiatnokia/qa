@@ -1,0 +1,13 @@
+<suite name="SuiteProject" verbose="1" >
+    <test name="project">
+        <classes>
+            <class name="com.tututu.qa.service.project.ProjectTest"/>
+            <class name="com.tututu.qa.service.impl.IProjectServiceImplTest"/>
+            <class name="com.tututu.qa.service.impl.IProjectApiServiceImplTest"/>
+            <class name="com.tututu.qa.service.impl.IPerformanceImplTest"/>
+            <class name="com.tututu.qa.controller.PerformanceControllerTest"/>
+            <class name="com.tututu.qa.controller.ProjectApiControllerTest"/>
+            <class name="com.tututu.qa.controller.ProjectControllerTest"/>
+        </classes>
+    </test>
+</suite>

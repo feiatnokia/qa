@@ -1,0 +1,1 @@
+java -classpath "%classpath%:/home/dev/.m2/repository/org/testng/testng/7.1.0/testng-7.1.0.jar:/home/dev/.m2/repository/com/beust/jcommander/1.72/jcommander-1.72.jar:/home/dev/repos/qa:/home/dev/repos/qa/src/" org.testng.TestNG

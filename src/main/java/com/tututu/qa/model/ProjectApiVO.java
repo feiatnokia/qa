@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * @author Yu QiLin
+ * @author 玉麒麟
  * @description API VO
  * @createTime 2020年05月18日 09:31:00
  */

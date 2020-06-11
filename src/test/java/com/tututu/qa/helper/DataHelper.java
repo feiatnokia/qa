@@ -34,7 +34,7 @@ public class DataHelper extends AbstractTestNGSpringContextTests {
         DataFile d = method.getAnnotation(DataFile.class);
         List<Object> items = new ArrayList<>();
         List<List<String>> rows = read(d.path(), d.sheet());
-        if (rows != null || rows.size() > 0) {
+        if (rows != null && rows.size() > 0) {
             int size = rows.get(0).size();
             for (int i = 1; i < rows.size(); i++) {
                 Map<String, Object> map = new HashMap<>();

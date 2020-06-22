@@ -12,7 +12,7 @@
     </resultMap>
 
     <sql id="Project_Column_List">
-        id, project_no, name, create_time, update_time
+        id, project_no, name, avatar, create_time, update_time
     </sql>
 
     <insert id="insert" parameterType="com.tututu.qa.domain.Project">
